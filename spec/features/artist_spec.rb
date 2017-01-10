@@ -1,0 +1,21 @@
+require_relative '../rails_helper'
+
+describe Artist do
+
+  let(:artist) { Artist.new(name: 'Mango')}
+  let(:invalid_artist) { Artist.new }
+
+  it 'has a name attribute' do
+    expect(artist).to have_attributes(name: 'Mango')
+  end
+
+  it 'is invalid without a name' do
+    invalid_artist.valid?
+    expect(invalid_artist.errors.full_messages).to include("Name can't be blank")
+  end
+
+  it 'is valid with a name' do
+    expect(artist.errors).to be_empty
+  end
+
+end
