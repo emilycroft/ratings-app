@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20170109194416) do
     t.integer  "reviewable_id"
     t.string   "reviewable_type"
     t.bigint   "rating"
+    t.integer  "user_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

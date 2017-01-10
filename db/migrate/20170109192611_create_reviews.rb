@@ -5,6 +5,7 @@ class CreateReviews < ActiveRecord::Migration[5.0]
       t.integer :reviewable_id
       t.string :reviewable_type
       t.integer :rating, :limit => 5
+      t.integer :user_id
 
       t.timestamps
     end

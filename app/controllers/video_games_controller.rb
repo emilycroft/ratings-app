@@ -16,6 +16,15 @@ class VideoGamesController < ApplicationController
     redirect_to video_game_path(@video_game)
   end
 
+  def edit
+    @video_game = VideoGame.find(params[:id])
+  end
+
+  def update
+    @video_game = VideoGame.update(video_game_params)
+    redirect_to video_game_path(@video_game)
+  end
+
   def destroy
     @video_game = VideoGame.find(params[:id])
     @video_game.destroy
