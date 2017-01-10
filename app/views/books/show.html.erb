@@ -1,5 +1,7 @@
 <h1><%= @book.title %></h1>
 <span>by </span><span><%= @book.author %></span>
+<br>
+<span>Average Rating: </span><span><%= @book.average_rating %></span>
 
 <%= button_to "Delete Book", book_path(@book), method: 'delete' %>
 

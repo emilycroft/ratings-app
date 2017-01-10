@@ -1,4 +1,6 @@
 <h1><%= @artist.name %></h1>
+<br>
+<span>Average Rating: </span><span><%= @artist.average_rating %></span>
 
 <%= button_to "Delete Artist", artist_path(@artist), method: 'delete' %>
 
