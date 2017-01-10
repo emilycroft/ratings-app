@@ -4,6 +4,7 @@ class CreateReviews < ActiveRecord::Migration[5.0]
       t.text :content
       t.references :reviewable, polymorphic: true, index: true
       t.integer :rating, :limit => 5
+      t.integer :user_id
 
       t.timestamps
     end

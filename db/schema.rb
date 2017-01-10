@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20170109194416) do
     t.string   "reviewable_type"
     t.integer  "reviewable_id"
     t.bigint   "rating"
+    t.integer  "user_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.index ["reviewable_type", "reviewable_id"], name: "index_reviews_on_reviewable_type_and_reviewable_id", using: :btree

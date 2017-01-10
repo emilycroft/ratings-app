@@ -1,10 +1,10 @@
 <%= @book.title %><br>
 <%= @book.author %>
 
-<%#@book.reviews.each do |review| %>
-  <%#review.rating %>
-  <%#review.content %>
-<%#end%>
+<% @book.reviews.each do |review| %>
+  <%= review.rating %>
+  <%= review.content %>
+<% end %>
 
 <%= form_for(@review) do |f| %>
 
@@ -15,7 +15,7 @@
   <%= f.number_field :rating %>
 
   <%= f.hidden_field :reviewable_id, :value => @book.id %>
-  <%= f.hidden_field :reviewable_type, :value => "Book" %>
+<%= f.hidden_field :reviewable_type, :value => "Book" %>
 
   <%= f.submit %>
 
