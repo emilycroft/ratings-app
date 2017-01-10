@@ -5,9 +5,8 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @current_user = User.first
     @review = Review.new(review_params)
-    @review.user_id = @current_user.id
+    @review.user_id = current_user.id if logged_in?
     if @review.save
       redirect_to book_path(@review.reviewable_id)
     end

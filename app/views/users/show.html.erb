@@ -1,4 +1,6 @@
 <%= @user.name %><br>
-<%= @user.username %>
+<%= @user.username %><br>
+
+<%= button_to "Sign Out", current_user, :method => :destroy %>
 
 <p>insert user's likes </p>
