@@ -5,6 +5,7 @@ class VideoGamesController < ApplicationController
 
   def show
     @video_game = VideoGame.find(params[:id])
+    @review = Review.new
   end
 
   def new

@@ -1,22 +1,35 @@
-<%= @book.title %><br>
-<%= @book.author %>
+<h1><%= @book.title %></h1>
+<span>by </span><span><%= @book.author %></span>
 
+<%= button_to "Delete Book", book_path(@book), method: 'delete' %>
+
+<h2>Reviews</h2>
+<ul>
 <% @book.reviews.each do |review| %>
-  <%= review.rating %>
-  <%= review.content %>
+  <li>
+    <label>User: </label>
+    <%= review.user.username %>
+    <br>
+    <label>Rating: </label>
+    <%= review.rating %>
+    <br>
+    <label>Review: </label>
+    <%= review.content %>
+  </li>
 <% end %>
+</ul>
 
+<h3>Create Review</h3>
 <%= form_for(@review) do |f| %>
 
   <%= f.label :content %>
   <%= f.text_field :content %>
-
+  <br>
   <%= f.label :rating %>
   <%= f.number_field :rating %>
-
+  <br>
   <%= f.hidden_field :reviewable_id, :value => @book.id %>
-<%= f.hidden_field :reviewable_type, :value => "Book" %>
-
+  <%= f.hidden_field :reviewable_type, :value => "Book" %>
   <%= f.submit %>
 
 <% end %>
