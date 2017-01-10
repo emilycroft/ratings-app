@@ -1,11 +1,10 @@
-<h1><%= @book.title %></h1>
-<span>by </span><span><%= @book.author %></span>
+<h1><%= @video_game.title %></h1>
 
-<%= button_to "Delete Book", book_path(@book), method: 'delete' %>
+<%= button_to "Delete Video Game", video_game_path(@video_game), method: 'delete' %>
 
 <h2>Reviews</h2>
 <ul>
-<% @book.reviews.each do |review| %>
+<% @video_game.reviews.each do |review| %>
   <li>
     <label>User: </label>
     <%= review.user.username %>
@@ -28,7 +27,8 @@
   <%= f.label :rating %>
   <%= f.number_field :rating %>
   <br>
-  <%= f.hidden_field :reviewable_id, :value => @book.id %>
-  <%= f.hidden_field :reviewable_type, :value => "Book" %>
+  <%= f.hidden_field :reviewable_id, :value => @video_game.id %>
+  <%= f.hidden_field :reviewable_type, :value => "VideoGame" %>
   <%= f.submit %>
+
 <% end %>
