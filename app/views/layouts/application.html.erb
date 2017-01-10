@@ -8,7 +8,16 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+
   <body>
+    <nav>
+      <%= link_to "Home", homepage_path %>
+      <%= link_to "Logout", '/sessions/:id', method: 'delete' %>
+      <%= link_to "Books", books_path %>
+      <%= link_to "Movies", movies_path %>
+      <%= link_to "Video Games", video_games_path %>
+      <%= link_to "Artists", artists_path %>
+    </nav>
     <%= yield %>
   </body>
 </html>
