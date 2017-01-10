@@ -5,10 +5,11 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    binding.pry
+    @current_user = User.first
     @review = Review.new(review_params)
+    @review.user_id = @current_user.id
     if @review.save
-      redirect_to '/'
+      redirect_to book_path(@review.reviewable_id)
     end
   end
 
@@ -16,7 +17,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:content, :rating, :reviewable_type, :reviewable_id)
+    params.require(:review).permit(:content, :rating, :reviewable_type, :reviewable_id, :user_id)
   end
 
 end
