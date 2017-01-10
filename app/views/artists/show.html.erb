@@ -2,6 +2,10 @@
 
 <%= button_to "Delete Artist", artist_path(@artist), method: 'delete' %>
 
+<!-- <% if logged_in? %>
+<%= button_to "Add to my list", user_path(current_user) %>
+<% end %> -->
+
 <h2>Reviews</h2>
 <ul>
 <% @artist.reviews.each do |review| %>
