@@ -1,9 +1,22 @@
 <%= @book.title %><br>
-<%=@book.author> %>
+<%= @book.author %>
 
-<%= @book.reviews.each do |review| %>
-  <%=review.rating %>
-  <%=review.content %>
-<%end%>
+<% @book.reviews.each do |review| %>
+  <%= review.rating %>
+  <%= review.content %>
+<% end %>
 
-<%= link_to "Review this Book", new_book_review_path %>
+<%= form_for(@review) do |f| %>
+
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+
+  <%= f.label :rating %>
+  <%= f.number_field :rating %>
+
+  <%= f.hidden_field :reviewable_id, :value => @book.id %>
+<%= f.hidden_field :reviewable_type, :value => "Book" %>
+
+  <%= f.submit %>
+
+<% end %>
