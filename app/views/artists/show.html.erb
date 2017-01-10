@@ -2,7 +2,8 @@
 <br>
 <span>Average Rating: </span><span><%= @artist.average_rating %></span>
 
-<%= button_to "Delete Artist", artist_path(@artist), method: 'delete' %>
+<%# button_to "Delete Artist", artist_path(@artist), method: 'delete' %>
+
 
 <h2>Reviews</h2>
 <ul>
@@ -20,6 +21,7 @@
 <% end %>
 </ul>
 
+<% if logged_in? %>
 <h3>Create Review</h3>
 <%= form_for(@review) do |f| %>
 
@@ -33,4 +35,5 @@
   <%= f.hidden_field :reviewable_type, :value => "Artist" %>
   <%= f.submit %>
 
+  <% end %>
 <% end %>

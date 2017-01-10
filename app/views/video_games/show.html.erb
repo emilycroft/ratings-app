@@ -1,7 +1,7 @@
 <h1><%= @video_game.title %></h1><br>
 <span>Average Rating: </span><span><%= @video_game.average_rating %></span>
 
-<%= button_to "Delete Video Game", video_game_path(@video_game), method: 'delete' %>
+<%# button_to "Delete Video Game", video_game_path(@video_game), method: 'delete' %>
 
 <h2>Reviews</h2>
 <ul>
@@ -19,6 +19,7 @@
 <% end %>
 </ul>
 
+<% if logged_in? %>
 <h3>Create Review</h3>
 <%= form_for(@review) do |f| %>
 
@@ -31,5 +32,7 @@
   <%= f.hidden_field :reviewable_id, :value => @video_game.id %>
   <%= f.hidden_field :reviewable_type, :value => "VideoGame" %>
   <%= f.submit %>
+
+  <% end %>
 
 <% end %>
