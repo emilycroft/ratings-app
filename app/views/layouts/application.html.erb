@@ -12,11 +12,16 @@
   <body>
     <nav>
       <%= link_to "Home", homepage_path %>
-      <%= link_to "Logout", '/sessions/:id', method: 'delete' %>
       <%= link_to "Books", books_path %>
       <%= link_to "Movies", movies_path %>
       <%= link_to "Video Games", video_games_path %>
       <%= link_to "Artists", artists_path %>
+
+      <% if logged_in? %>
+        <%= link_to "Logout", '/sessions/:id', method: 'delete' %>
+      <% else %>
+        <%= link_to "Login", new_session_path %>
+      <% end %>
     </nav>
     <%= yield %>
   </body>
