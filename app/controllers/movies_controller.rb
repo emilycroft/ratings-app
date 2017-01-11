@@ -6,6 +6,11 @@ class MoviesController < ApplicationController
   def show
     @movie = Movie.find(params[:id])
     @review = Review.new
+    if current_user.likes.pluck(:likeable_id).include?(@movie.id)
+      @like = Like.find_by(likeable_id: @movie.id)
+    else
+      @like = Like.new
+    end
   end
 
   def new

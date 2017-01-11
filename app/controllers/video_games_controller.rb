@@ -6,6 +6,11 @@ class VideoGamesController < ApplicationController
   def show
     @video_game = VideoGame.find(params[:id])
     @review = Review.new
+    if current_user.likes.pluck(:likeable_id).include?(@video_game.id)
+      @like = Like.find_by(likeable_id: @video_game.id)
+    else
+      @like = Like.new
+    end
   end
 
   def new

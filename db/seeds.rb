@@ -16,7 +16,7 @@
 end
 
 5.times do
-  Artist.create( name: Faker::Name.name )
+  Artist.create( title: Faker::Name.name )
 end
 
 5.times do
