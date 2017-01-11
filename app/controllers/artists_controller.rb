@@ -5,10 +5,14 @@ class ArtistsController < ApplicationController
 
   def show
     @artist = Artist.find(params[:id])
-    @review = Review.new
-    if current_user.likes.pluck(:likeable_id).include?(@artist.id)
-      @like = Like.find_by(likeable_id: @artist.id)
-    else
+
+    @review = Review.find_by(reviewable_id: @artist.id, user_id: current_user.id, reviewable_type: "Artist")
+    if @review.blank?
+      @review = Review.new
+    end
+
+    @like = Like.find_by(likeable_id: @artist.id, user_id: current_user.id, likeable_type: "Artist")
+    if @like.blank?
       @like = Like.new
     end
   end

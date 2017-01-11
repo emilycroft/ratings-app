@@ -5,10 +5,14 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Movie.find(params[:id])
-    @review = Review.new
-    if current_user.likes.pluck(:likeable_id).include?(@movie.id)
-      @like = Like.find_by(likeable_id: @movie.id)
-    else
+
+    @review = Review.find_by(reviewable_id: @movie.id, user_id: current_user.id, reviewable_type: "Movie")
+    if @review.blank?
+      @review = Review.new
+    end
+
+    @like = Like.find_by(likeable_id: @movie.id, user_id: current_user.id, likeable_type: "Movie")
+    if @like.blank?
       @like = Like.new
     end
   end

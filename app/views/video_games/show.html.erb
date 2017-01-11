@@ -23,10 +23,10 @@
 <h3>Create Review</h3>
 
 <% if reviewed?(@review) %>
-  <%= form_for(@review, method: "patch") do |f| %>
+  <%= form_for(@review) do |f| %>
 
     <%= f.label :content %>
-    <%= f.text_field :content %>
+    <%= f.text_area :content %>
     <br>
     <%= f.label :rating %>
     <%= f.number_field :rating %>
@@ -41,7 +41,7 @@
   <%= form_for(@review) do |f| %>
 
     <%= f.label :content %>
-    <%= f.text_field :content %>
+    <%= f.text_area :content %>
     <br>
     <%= f.label :rating %>
     <%= f.number_field :rating, placeholder: "0-5" %>
@@ -67,4 +67,6 @@
     <% end %>
   <% end %>
 
+  <% else %>
+    <p>You don't appear to be logged in</p>
 <% end %>

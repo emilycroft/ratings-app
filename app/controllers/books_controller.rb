@@ -6,10 +6,14 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
-    @review = Review.new
-    if current_user.likes.pluck(:likeable_id).include?(@book.id)
-      @like = Like.find_by(likeable_id: @book.id)
-    else
+
+    @review = Review.find_by(reviewable_id: @book.id, user_id: current_user.id, reviewable_type: "Book")
+    if @review.blank?
+      @review = Review.new
+    end
+
+    @like = Like.find_by(likeable_id: @book.id, user_id: current_user.id, likeable_type: "Book")
+    if @like.blank?
       @like = Like.new
     end
   end
