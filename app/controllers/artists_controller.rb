@@ -18,8 +18,13 @@ class ArtistsController < ApplicationController
   end
 
   def create
-    @artist = Artist.create(artist_params)
-    redirect_to artist_path(@artist)
+    @artist = Artist.new(artist_params)
+    unless @artist.save
+      render :new
+    else
+      flash[:notice] = "Artist has been successfully created"
+      redirect_to artist_path(@artist)
+    end
   end
 
   def edit
@@ -40,6 +45,6 @@ class ArtistsController < ApplicationController
   private
 
   def artist_params
-    params.require(:artist).permit(:name)
+    params.require(:artist).permit(:title)
   end
 end

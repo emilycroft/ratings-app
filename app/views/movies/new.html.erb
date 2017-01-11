@@ -1,3 +1,9 @@
+<h1>Create a new movie</h1>
+
+<% @movie.errors.full_messages.each do |msg| %>
+<p><%= msg %></p>
+<% end %>
+
 <%= form_for(@movie) do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>

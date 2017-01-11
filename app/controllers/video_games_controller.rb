@@ -17,9 +17,15 @@ class VideoGamesController < ApplicationController
     @video_game = VideoGame.new
   end
 
+
   def create
-    @video_game = VideoGame.create(video_game_params)
-    redirect_to video_game_path(@video_game)
+    @video_game = VideoGame.new(video_game_params)
+    unless @video_game.save
+      render :new
+    else
+      flash[:notice] = "Video Game has been successfully created"
+      redirect_to video_game_path(@video_game)
+    end
   end
 
   def edit
