@@ -1,6 +1,11 @@
-<%= @user.name %><br>
+<h1><%= @user.name %><br></h1>
 <%= @user.username %><br>
 
 <%= button_to "Sign Out", session_path, :method => :delete %>
 
-<p>insert user's reviews </p>
+<ul>
+<% @user.reviews.each do |review| %>
+  <li><%= review.content %>
+      <%= review.rating %></li>
+<% end %>
+</ul>

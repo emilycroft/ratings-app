@@ -1,7 +1,8 @@
 <h1><%= @movie.title %></h1>
-<span>directed by </span><span><%= @movie.director %></span>
+<span>directed by </span><span><%= @movie.director %></span><br>
+<span>Average Rating: </span><span><%= @movie.average_rating %></span>
 
-<%= button_to "Delete Movie", movie_path(@movie), method: 'delete' %>
+<%# button_to "Delete Movie", movie_path(@movie), method: 'delete' %>
 
 <h2>Reviews</h2>
 <ul>
@@ -19,6 +20,7 @@
 <% end %>
 </ul>
 
+<% if logged_in? %>
 <h3>Create Review</h3>
 <%= form_for(@review) do |f| %>
 
@@ -32,4 +34,5 @@
   <%= f.hidden_field :reviewable_type, :value => "Movie" %>
   <%= f.submit %>
 
+  <% end %>
 <% end %>
