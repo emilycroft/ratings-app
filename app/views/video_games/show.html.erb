@@ -24,38 +24,36 @@
 </ul>
 
 <% if logged_in? %>
-<h3>Create Review</h3>
+  <h3>Create Review</h3>
 
-<% if reviewed?(@review) %>
-  <%= form_for(@review) do |f| %>
+  <% if reviewed?(@review) %>
+    <%= form_for(@review) do |f| %>
+      <%= f.label :content %>
+      <%= f.text_area :content %>
+      <br>
+      <%= f.label :rating %>
+      <%= f.number_field :rating %>
+      <br>
+      <%= f.hidden_field :reviewable_id, :value => @video_game.id %>
+      <%= f.hidden_field :reviewable_type, :value => "VideoGame" %>
+      <%= f.submit %>
+    <% end %>   <!-- END form_for -->
 
-    <%= f.label :content %>
-    <%= f.text_area :content %>
-    <br>
-    <%= f.label :rating %>
-    <%= f.number_field :rating %>
-    <br>
-    <%= f.hidden_field :reviewable_id, :value => @video_game.id %>
-    <%= f.hidden_field :reviewable_type, :value => "VideoGame" %>
-    <%= f.submit %>
-    <!-- end form_for -->
-  <% end %>
+  <% else %>
+    <%= form_for(@review) do |f| %>
 
-<% else %>
-  <%= form_for(@review) do |f| %>
+      <%= f.label :content %>
+      <%= f.text_area :content %>
+      <br>
+      <%= f.label :rating %>
+      <%= f.number_field :rating, placeholder: "0-5" %>
+      <br>
+      <%= f.hidden_field :reviewable_id, :value => @video_game.id %>
+      <%= f.hidden_field :reviewable_type, :value => "VideoGame" %>
+      <%= f.submit  %>
+    <% end %>   <!-- END form_for -->
 
-    <%= f.label :content %>
-    <%= f.text_area :content %>
-    <br>
-    <%= f.label :rating %>
-    <%= f.number_field :rating, placeholder: "0-5" %>
-    <br>
-    <%= f.hidden_field :reviewable_id, :value => @video_game.id %>
-    <%= f.hidden_field :reviewable_type, :value => "VideoGame" %>
-    <%= f.submit  %>
-  <% end %>
-
-<% end %>
+  <% end %>   <!-- END if reviewed? -->
 
   <% unless liked?(@like) %>
     <%= form_for(@like) do |f| %>
@@ -69,8 +67,8 @@
       <%= f.hidden_field :likeable_type, :value => "VideoGame" %>
       <%= f.submit "Remove from my list" %>
     <% end %>
-  <% end %>
+  <% end %>   <!-- END unless liked? -->
 
   <% else %>
-    <p>You don't appear to be logged in</p>
+    <%= render 'partials/login_signup' %>
 <% end %>
