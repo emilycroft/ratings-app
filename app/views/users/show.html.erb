@@ -6,8 +6,11 @@
 <h2><%= @user.name %>'s Reviews</h2>
 <ul>
 <% @user.reviews.each do |review| %>
-  <li><%= review.content %>
-      <%= review.rating %></li>
+  <li>
+    <h3><%= link_to review.reviewable.title, url_for(review.reviewable) %></h3>
+    <p><%= review.content %></p>
+    <p><b>Rating: </b><%= review.rating %></p>
+  </li>
 <% end %>
 </ul>
 
