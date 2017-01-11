@@ -8,6 +8,10 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user_id = current_user.id if logged_in?
     if @review.save
+      flash[:notice] = "Your review has been submitted"
+      redirect_to reviewable_path(@review)
+    else
+      flash[:notice] = "Your review is invalid"
       redirect_to reviewable_path(@review)
     end
   end
