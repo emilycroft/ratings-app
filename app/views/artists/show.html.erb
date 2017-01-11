@@ -28,7 +28,6 @@
 
 <% if reviewed?(@review) %>
   <%= form_for(@review) do |f| %>
-
     <%= f.label :content %>
     <%= f.text_area :content %>
     <br>
@@ -38,12 +37,9 @@
     <%= f.hidden_field :reviewable_id, :value => @artist.id %>
     <%= f.hidden_field :reviewable_type, :value => "Artist" %>
     <%= f.submit %>
-    <!-- end form_for -->
   <% end %>
-
 <% else %>
   <%= form_for(@review) do |f| %>
-
     <%= f.label :content %>
     <%= f.text_area :content %>
     <br>
@@ -54,7 +50,6 @@
     <%= f.hidden_field :reviewable_type, :value => "Artist" %>
     <%= f.submit  %>
   <% end %>
-
 <% end %>
 
   <% unless liked?(@like) %>
@@ -71,6 +66,6 @@
     <% end %>
   <% end %>
 
-  <% else %>
-    <p>You don't appear to be logged in</p>
+<% else %>
+  <%= render 'partials/login_signup' %>
 <% end %>

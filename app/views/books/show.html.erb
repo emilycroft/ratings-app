@@ -1,63 +1,65 @@
 <h1><%= @book.title %></h1>
-<span>by </span><span><%= @book.author %></span>
+<span>by
+</span>
+<span><%= @book.author %></span>
 <br>
-<span>Average Rating: </span><span><%= @book.average_rating %></span>
+<span>Average Rating:
+</span>
+<span><%= @book.average_rating %></span>
 
 <%# button_to "Delete Book", book_path(@book), method: 'delete' %>
 
 <h2>Reviews</h2>
 <ul>
-<% @book.reviews.each do |review| %>
-  <li>
-    <label>User: </label>
-    <%= review.user.username %>
-    <br>
-    <label>Rating: </label>
-    <%= review.rating %>
-    <br>
-    <label>Review: </label>
-    <%= review.content %>
-    <br>
-    <% if logged_in? && current_user.id == review.user_id %>
-      <%= button_to("Delete Review", review_path(review), method: 'delete')%>
+    <% @book.reviews.each do |review| %>
+    <li>
+        <label>User:
+        </label>
+        <%= review.user.username %>
+        <br>
+        <label>Rating:
+        </label>
+        <%= review.rating %>
+        <br>
+        <label>Review:
+        </label>
+        <%= review.content %>
+        <br>
+        <% if logged_in? && current_user.id == review.user_id %>
+        <%= button_to("Delete Review", review_path(review), method: 'delete')%>
+        <% end %>
+    </li>
     <% end %>
-  </li>
-<% end %>
 </ul>
 
 <% if logged_in? %>
-<h3>Create Review</h3>
+  <h3>Create Review</h3>
 
-<% if reviewed?(@review) %>
-  <%= form_for(@review) do |f| %>
-
-    <%= f.label :content %>
-    <%= f.text_area :content %>
-    <br>
-    <%= f.label :rating %>
-    <%= f.number_field :rating %>
-    <br>
-    <%= f.hidden_field :reviewable_id, :value => @book.id %>
-    <%= f.hidden_field :reviewable_type, :value => "Book" %>
-    <%= f.submit %>
-    <!-- end form_for -->
+  <% if reviewed?(@review) %>
+    <%= form_for(@review) do |f| %>
+      <%= f.label :content %>
+      <%= f.text_area :content %>
+      <br>
+      <%= f.label :rating %>
+      <%= f.number_field :rating %>
+      <br>
+      <%= f.hidden_field :reviewable_id, :value => @book.id %>
+      <%= f.hidden_field :reviewable_type, :value => "Book" %>
+      <%= f.submit %>
+    <% end %>
+  <% else %>
+    <%= form_for(@review) do |f| %>
+      <%= f.label :content %>
+      <%= f.text_area :content %>
+      <br>
+      <%= f.label :rating %>
+      <%= f.number_field :rating, placeholder: "0-5" %>
+      <br>
+      <%= f.hidden_field :reviewable_id, :value => @book.id %>
+      <%= f.hidden_field :reviewable_type, :value => "Book" %>
+      <%= f.submit  %>
+    <% end %>
   <% end %>
-
-<% else %>
-  <%= form_for(@review) do |f| %>
-
-    <%= f.label :content %>
-    <%= f.text_area :content %>
-    <br>
-    <%= f.label :rating %>
-    <%= f.number_field :rating, placeholder: "0-5" %>
-    <br>
-    <%= f.hidden_field :reviewable_id, :value => @book.id %>
-    <%= f.hidden_field :reviewable_type, :value => "Book" %>
-    <%= f.submit  %>
-  <% end %>
-
-<% end %>
 
   <% unless liked?(@like) %>
     <%= form_for(@like) do |f| %>
@@ -73,6 +75,6 @@
     <% end %>
   <% end %>
 
-  <% else %>
-    <p>You don't appear to be logged in</p>
+<% else %>
+  <%= render 'partials/login_signup' %>
 <% end %>

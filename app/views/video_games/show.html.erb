@@ -38,10 +38,8 @@
       <%= f.hidden_field :reviewable_type, :value => "VideoGame" %>
       <%= f.submit %>
     <% end %>   <!-- END form_for -->
-
   <% else %>
     <%= form_for(@review) do |f| %>
-
       <%= f.label :content %>
       <%= f.text_area :content %>
       <br>
@@ -52,7 +50,6 @@
       <%= f.hidden_field :reviewable_type, :value => "VideoGame" %>
       <%= f.submit  %>
     <% end %>   <!-- END form_for -->
-
   <% end %>   <!-- END if reviewed? -->
 
   <% unless liked?(@like) %>
@@ -69,6 +66,6 @@
     <% end %>
   <% end %>   <!-- END unless liked? -->
 
-  <% else %>
-    <%= render 'partials/login_signup' %>
+<% else %>
+  <%= render 'partials/login_signup' %>
 <% end %>
