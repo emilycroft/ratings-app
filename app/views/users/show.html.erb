@@ -3,9 +3,17 @@
 
 <%= button_to "Sign Out", session_path, :method => :delete %>
 
+<h2><%= @user.name %>'s Reviews</h2>
 <ul>
 <% @user.reviews.each do |review| %>
   <li><%= review.content %>
       <%= review.rating %></li>
+<% end %>
+</ul>
+
+<h2><%= @user.name %>'s List</h2>
+<ul>
+<% @user.likes.each do |like| %>
+  <li><%= like.likeable.title %></li>
 <% end %>
 </ul>

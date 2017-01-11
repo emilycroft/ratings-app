@@ -24,6 +24,9 @@
         <%= link_to "Login", new_session_path %>
       <% end %>
     </nav>
+    <% if flash[:notice] %>
+      <p><%= flash[:notice] %></p>
+    <% end %>
     <%= yield %>
   </body>
 </html>

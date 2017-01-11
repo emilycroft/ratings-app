@@ -34,5 +34,20 @@
   <%= f.hidden_field :reviewable_id, :value => @book.id %>
   <%= f.hidden_field :reviewable_type, :value => "Book" %>
   <%= f.submit %>
+
   <% end %>
+  <% unless liked?(@like) %>
+    <%= form_for(@like) do |f| %>
+      <%= f.hidden_field :likeable_id, :value => @book.id %>
+      <%= f.hidden_field :likeable_type, :value => "Book" %>
+      <%= f.submit "Add to my list" %>
+    <% end %>
+  <% else %>
+    <%= form_for(@like, method: "delete") do |f| %>
+      <%= f.hidden_field :likeable_id, :value => @book.id %>
+      <%= f.hidden_field :likeable_type, :value => "Book" %>
+      <%= f.submit "Remove from my list" %>
+    <% end %>
+  <% end %>
+
 <% end %>
