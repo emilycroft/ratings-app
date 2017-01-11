@@ -16,6 +16,10 @@
     <br>
     <label>Review: </label>
     <%= review.content %>
+    <br>
+    <% if logged_in? && current_user.id == review.user_id %>
+      <%= button_to("Delete Review", review_path(review), method: 'delete')%>
+    <% end %>
   </li>
 <% end %>
 </ul>

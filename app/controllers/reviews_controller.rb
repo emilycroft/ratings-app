@@ -17,13 +17,19 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    # @review = Review.find(params[:id])
   end
 
   def update
     @review = Review.find_by(user_id: current_user.id, reviewable_id: params[:review][:reviewable_id])
     @review.update(review_params)
     redirect_to reviewable_path(@review)
+  end
+
+  def destroy
+    @review = Review.find(params[:id])
+    path = "/#{@review.reviewable_type.underscore.pluralize}/#{@review.reviewable_id}"
+    @review.delete
+    redirect_to path
   end
 
 
