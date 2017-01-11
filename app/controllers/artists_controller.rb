@@ -6,12 +6,12 @@ class ArtistsController < ApplicationController
   def show
     @artist = Artist.find(params[:id])
 
-    @review = Review.find_by(reviewable_id: @artist.id, user_id: current_user.id, reviewable_type: "Artist")
+    @review = Review.find_by(reviewable_id: @artist.id, user_id: current_user.id, reviewable_type: "Artist") if logged_in?
     if @review.blank?
       @review = Review.new
     end
 
-    @like = Like.find_by(likeable_id: @artist.id, user_id: current_user.id, likeable_type: "Artist")
+    @like = Like.find_by(likeable_id: @artist.id, user_id: current_user.id, likeable_type: "Artist") if logged_in?
     if @like.blank?
       @like = Like.new
     end
