@@ -1,0 +1,13 @@
+<% unless liked?(@like) %>
+  <%= form_for(@like) do |f| %>
+    <%= f.hidden_field :likeable_id, :value => @like.likeable.id %>
+    <%= f.hidden_field :likeable_type, :value => @like.likeable.class.to_s %>
+    <%= f.submit "Add to my list" %>
+  <% end %>
+<% else %>
+  <%= form_for(@like, method: "delete") do |f| %>
+    <%= f.hidden_field :likeable_id, :value => @like.likeable.id %>
+    <%= f.hidden_field :likeable_type, :value => @like.likeable.class.to_s %>
+    <%= f.submit "Remove from my list" %>
+  <% end %>
+<% end %>

@@ -6,14 +6,20 @@ class VideoGamesController < ApplicationController
   def show
     @video_game = VideoGame.find(params[:id])
 
-    @review = Review.find_by(reviewable_id: @video_game.id, user_id: current_user.id, reviewable_type: "VideoGame") if logged_in?
+    if logged_in?
+      @review = Review.find_by(reviewable_id: @video_game.id, user_id: current_user.id, reviewable_type: "VideoGame")
+    end
     if @review.blank?
       @review = Review.new
+      @review.reviewable = @video_game
     end
 
-    @like = Like.find_by(likeable_id: @video_game.id, user_id: current_user.id, likeable_type: "VideoGame") if logged_in?
+    if logged_in?
+      @like = Like.find_by(likeable_id: @video_game.id, user_id: current_user.id, likeable_type: "VideoGame")
+    end
     if @like.blank?
       @like = Like.new
+      @like.likeable = @video_game
     end
   end
 

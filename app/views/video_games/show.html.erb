@@ -1,71 +1,10 @@
 <h1><%= @video_game.title %></h1><br>
-<span>Average Rating: </span><span><%= @video_game.average_rating %></span>
 
-<%# button_to "Delete Video Game", video_game_path(@video_game), method: 'delete' %>
-
-<h2>Reviews</h2>
-<ul>
-<% @video_game.reviews.each do |review| %>
-  <li>
-    <label>User: </label>
-    <%= review.user.username %>
-    <br>
-    <label>Rating: </label>
-    <%= review.rating %>
-    <br>
-    <label>Review: </label>
-    <%= review.content %>
-    <br>
-    <% if logged_in? && current_user.id == review.user_id %>
-      <%= button_to("Delete Review", review_path(review), method: 'delete')%>
-    <% end %>
-  </li>
-<% end %>
-</ul>
+<%= render 'partials/review_list' %>
 
 <% if logged_in? %>
-  <h3>Create Review</h3>
-
-  <% if reviewed?(@review) %>
-    <%= form_for(@review) do |f| %>
-      <%= f.label :content %>
-      <%= f.text_area :content %>
-      <br>
-      <%= f.label :rating %>
-      <%= f.number_field :rating %>
-      <br>
-      <%= f.hidden_field :reviewable_id, :value => @video_game.id %>
-      <%= f.hidden_field :reviewable_type, :value => "VideoGame" %>
-      <%= f.submit %>
-    <% end %>   <!-- END form_for -->
-  <% else %>
-    <%= form_for(@review) do |f| %>
-      <%= f.label :content %>
-      <%= f.text_area :content %>
-      <br>
-      <%= f.label :rating %>
-      <%= f.number_field :rating, placeholder: "0-5" %>
-      <br>
-      <%= f.hidden_field :reviewable_id, :value => @video_game.id %>
-      <%= f.hidden_field :reviewable_type, :value => "VideoGame" %>
-      <%= f.submit  %>
-    <% end %>   <!-- END form_for -->
-  <% end %>   <!-- END if reviewed? -->
-
-  <% unless liked?(@like) %>
-    <%= form_for(@like) do |f| %>
-      <%= f.hidden_field :likeable_id, :value => @video_game.id %>
-      <%= f.hidden_field :likeable_type, :value => "VideoGame" %>
-      <%= f.submit "Add to my list" %>
-    <% end %>
-  <% else %>
-    <%= form_for(@like, method: "delete") do |f| %>
-      <%= f.hidden_field :likeable_id, :value => @video_game.id %>
-      <%= f.hidden_field :likeable_type, :value => "VideoGame" %>
-      <%= f.submit "Remove from my list" %>
-    <% end %>
-  <% end %>   <!-- END unless liked? -->
-
+  <%= render 'partials/review_form' %>
+  <%= render 'partials/like_form' %>
 <% else %>
   <%= render 'partials/login_signup' %>
 <% end %>

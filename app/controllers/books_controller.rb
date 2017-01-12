@@ -7,14 +7,20 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
 
-    @review = Review.find_by(reviewable_id: @book.id, user_id: current_user.id, reviewable_type: "Book") if logged_in?
+    if logged_in?
+      @review = Review.find_by(reviewable_id: @book.id, user_id: current_user.id, reviewable_type: "Book")
+    end
     if @review.blank?
       @review = Review.new
+      @review.reviewable = @book
     end
 
-    @like = Like.find_by(likeable_id: @book.id, user_id: current_user.id, likeable_type: "Book") if logged_in?
+    if logged_in?
+      @like = Like.find_by(likeable_id: @book.id, user_id: current_user.id, likeable_type: "Book")
+    end
     if @like.blank?
       @like = Like.new
+      @like.likeable = @book
     end
   end
 

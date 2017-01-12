@@ -1,0 +1,20 @@
+<h2>Reviews</h2>
+<span>Average Rating: </span><span><%= @review.reviewable.average_rating %></span>
+<ul>
+<% @review.reviewable.reviews.each do |review| %>
+  <li>
+    <label>User: </label>
+    <%= review.user.username %>
+    <br>
+    <label>Rating: </label>
+    <%= review.rating %>
+    <br>
+    <label>Review: </label>
+    <%= review.content %>
+    <br>
+    <% if logged_in? && current_user.id == review.user_id %>
+      <%= button_to("Delete Review", review_path(review), method: 'delete')%>
+    <% end %>
+  </li>
+<% end %>
+</ul>
