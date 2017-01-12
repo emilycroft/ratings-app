@@ -7,19 +7,11 @@ class ArtistsController < ApplicationController
     @artist = Artist.find(params[:id])
 
     if logged_in?
-      @review = Review.find_by(reviewable_id: @artist.id, user_id: current_user.id, reviewable_type: "Artist")
-    end
-    if @review.blank?
-      @review = Review.new
-      @review.reviewable = @artist
+      @review = Review.find_or_initialize_by(reviewable_id: @artist.id, user_id: current_user.id, reviewable_type: "Artist")
     end
 
     if logged_in?
-      @like = Like.find_by(likeable_id: @artist.id, user_id: current_user.id, likeable_type: "Artist")
-    end
-    if @like.blank?
-      @like = Like.new
-      @like.likeable = @artist
+      @like = Like.find_or_initialize_by(likeable_id: @artist.id, user_id: current_user.id, likeable_type: "Artist")
     end
   end
 

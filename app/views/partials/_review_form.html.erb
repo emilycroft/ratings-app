@@ -1,12 +1,16 @@
-<h3>Your Review</h3>
-<%= form_for(@review) do |f| %>
-  <%= f.label :content %>
-  <%= f.text_area :content %>
-  <br>
-  <%= f.label :rating %>
-  <%= f.number_field :rating %>
-  <br>
-  <%= f.hidden_field :reviewable_id, :value => @review.reviewable.id %>
-  <%= f.hidden_field :reviewable_type, :value => @review.reviewable.class.to_s %>
-  <%= f.submit %>
-<% end %>
+<h5>Your Review</h5>
+  <%= form_for(@review) do |f| %>
+    <div class="row">
+      <%= f.label :content, class: "tiny input-field col s3"  %>
+      <%= f.text_area :content, class: "input-field col s9", rows: "30" %>
+    </div>
+    <div class="row">
+      <%= f.label :rating, class: "tiny input-field col s3" %>
+      <%= f.number_field :rating, class: "input-field col s2" %>
+    </div>
+    <div class="row">
+      <%= f.hidden_field :reviewable_id, :value => @review.reviewable.id %>
+      <%= f.hidden_field :reviewable_type, :value => @review.reviewable.class.to_s %>
+      <%= f.submit class:"btn waves-effect waves-light teal lighten-1" %>
+    </div>
+  <% end %>

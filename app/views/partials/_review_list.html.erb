@@ -1,20 +1,32 @@
-<h2>Reviews</h2>
-<span>Average Rating: </span><span><%= @review.reviewable.average_rating %></span>
+
+<h5>Reviews</h5>
+
 <ul>
 <% @review.reviewable.reviews.each do |review| %>
-  <li>
-    <label>User: </label>
-    <%= review.user.username %>
-    <br>
-    <label>Rating: </label>
-    <%= review.rating %>
-    <br>
-    <label>Review: </label>
-    <%= review.content %>
-    <br>
-    <% if logged_in? && current_user.id == review.user_id %>
-      <%= button_to("Delete Review", review_path(review), method: 'delete')%>
-    <% end %>
-  </li>
+    <li class="row card">
+      <div class="">
+        <div class="row reviewable-row">
+          <label class="tiny col s2">User: </label>
+          <span class="tiny col s1"><%= review.user.username %></span>
+        </div>
+
+        <div class="row reviewable-row">
+          <label class="tiny col s2">Rating: </label>
+          <span class="tiny col s1"><%= review.rating %></span>
+        </div>
+
+        <div class="row reviewable-row">
+          <label class="tiny col s1">Review: </label>
+        </div>
+
+        <div class="row">
+          <span class="col s12"><%= review.content %></span>
+        </div>
+
+        <% if logged_in? && current_user.id == review.user_id %>
+          <%= button_to("Delete Review", review_path(review), method: 'delete', class: "btn waves-effect waves-light teal lighten-1")%>
+        <% end %>
+      </div>
+    </li>
 <% end %>
 </ul>

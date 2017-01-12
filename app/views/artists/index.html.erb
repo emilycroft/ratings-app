@@ -1,10 +1,10 @@
-<h1>Artists</h1>
+<h3 class="center">Artists</h3>
 
 <ul>
 <% @artists.each do |artist| %>
-  <li><%= link_to artist.title, artist_path(artist) %></li>
+  <li class="center"><%= link_to artist.title, artist_path(artist) %></li>
 <% end %>
 </ul>
 
 
-<%= link_to "Create New Artist", new_artist_path %>
+<div class="row center"><%= link_to "Create New Artist", new_artist_path, class: "btn-large waves-effect waves-light teal lighten-1" %></div>

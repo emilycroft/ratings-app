@@ -7,19 +7,11 @@ class MoviesController < ApplicationController
     @movie = Movie.find(params[:id])
 
     if logged_in?
-      @review = Review.find_by(reviewable_id: @movie.id, user_id: current_user.id, reviewable_type: "Movie")
-    end
-    if @review.blank?
-      @review = Review.new
-      @review.reviewable = @movie
+      @review = Review.find_or_initialize_by(reviewable_id: @movie.id, user_id: current_user.id, reviewable_type: "Movie")
     end
 
     if logged_in?
-      @like = Like.find_by(likeable_id: @movie.id, user_id: current_user.id, likeable_type: "Movie")
-    end
-    if @like.blank?
-      @like = Like.new
-      @like.likeable = @movie
+      @like = Like.find_or_initialize_by(likeable_id: @movie.id, user_id: current_user.id, likeable_type: "Movie")
     end
   end
 

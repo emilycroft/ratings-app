@@ -1,12 +1,25 @@
-<h1><%= @book.title %></h1>
-<span>by </span><span><%= @book.author %></span>
-<br>
+<div class="center reviewable-head z-depth-1">
+  <h2><%= @book.title %></h2>
+  <span class="tiny">by </span><span class="tiny"><%= @book.author %></span>
+  <br>
+  <label class="tiny">Average Rating: </label><span><%= @review.reviewable.average_rating %></span>
 
-<%= render 'partials/review_list' %>
+  <% if logged_in? %>
+    <%= render 'partials/like_form' %>
+  <% end %>
+</div>
 
-<% if logged_in? %>
-  <%= render 'partials/review_form' %>
-  <%= render 'partials/like_form' %>
-<% else %>
-  <%= render 'partials/login_signup' %>
-<% end %>
+<div class="container reviewable-content">
+  <div class="row">
+    <div class="col s6">
+      <%= render 'partials/review_list' %>
+    </div>
+    <div class="col s5 right">
+      <% if logged_in? %>
+        <%= render 'partials/review_form' %>
+      <% else %>
+        <%= render 'partials/login_signup' %>
+      <% end %>
+    </div>
+  </div>
+</div>

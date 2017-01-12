@@ -1,3 +1,23 @@
 // Place all the styles related to the Pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.tiny {
+  font-size: 20px;
+}
+
+.reviewable-head {
+  padding-bottom: 30px;
+}
+
+.reviewable-content {
+  padding-top: 30px;
+}
+
+.card {
+  padding: 30px 40px 35px 40px;
+}
+
+.reviewable-row {
+  margin-bottom: 5px !important;
+}

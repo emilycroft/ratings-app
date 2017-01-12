@@ -1,9 +1,10 @@
-<h1>Video Games</h1>
+<h3 class="center">Video Games</h3>
 
 <ul>
 <% @video_games.each do |video_game| %>
-  <li><%= link_to video_game.title, video_game_path(video_game) %></li>
+  <li class="center"><%= link_to video_game.title, video_game_path(video_game) %></li>
 <% end %>
 </ul>
 
-<%= link_to "Create New Video Game", new_video_game_path %>
+
+<div class="row center"><%= link_to "Create New Video Game", new_video_game_path, class: "btn-large waves-effect waves-light teal lighten-1" %></div>

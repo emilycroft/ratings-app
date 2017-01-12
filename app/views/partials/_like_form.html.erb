@@ -2,12 +2,12 @@
   <%= form_for(@like) do |f| %>
     <%= f.hidden_field :likeable_id, :value => @like.likeable.id %>
     <%= f.hidden_field :likeable_type, :value => @like.likeable.class.to_s %>
-    <%= f.submit "Add to my list" %>
+    <%= f.submit "Add to my list", class: "btn waves-effect waves-light teal lighten-1" %>
   <% end %>
 <% else %>
   <%= form_for(@like, method: "delete") do |f| %>
     <%= f.hidden_field :likeable_id, :value => @like.likeable.id %>
     <%= f.hidden_field :likeable_type, :value => @like.likeable.class.to_s %>
-    <%= f.submit "Remove from my list" %>
+    <%= f.submit "Remove from my list", class: "btn waves-effect waves-light teal lighten-1" %>
   <% end %>
 <% end %>

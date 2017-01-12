@@ -7,19 +7,11 @@ class VideoGamesController < ApplicationController
     @video_game = VideoGame.find(params[:id])
 
     if logged_in?
-      @review = Review.find_by(reviewable_id: @video_game.id, user_id: current_user.id, reviewable_type: "VideoGame")
-    end
-    if @review.blank?
-      @review = Review.new
-      @review.reviewable = @video_game
+      @review = Review.find_or_initialize_by(reviewable_id: @video_game.id, user_id: current_user.id, reviewable_type: "VideoGame")
     end
 
     if logged_in?
-      @like = Like.find_by(likeable_id: @video_game.id, user_id: current_user.id, likeable_type: "VideoGame")
-    end
-    if @like.blank?
-      @like = Like.new
-      @like.likeable = @video_game
+      @like = Like.find_or_initialize_by(likeable_id: @video_game.id, user_id: current_user.id, likeable_type: "VideoGame")
     end
   end
 

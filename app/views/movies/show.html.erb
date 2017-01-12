@@ -1,11 +1,29 @@
-<h1><%= @movie.title %></h1>
-<span>directed by </span><span><%= @movie.director %></span><br>
 
-<%= render 'partials/review_list' %>
+  <div class="center reviewable-head z-depth-1">
+    <h2><%= @movie.title %></h2>
+    <span class="tiny">directed by <span class="tiny"><%= @movie.director %></span>
+    <br>
 
-<% if logged_in? %>
-  <%= render 'partials/review_form' %>
-  <%= render 'partials/like_form' %>
-<% else %>
-  <%= render 'partials/login_signup' %>
-<% end %>
+    <label class="tiny">Average Rating: </label><span><%= @review.reviewable.average_rating %></span>
+
+
+    <% if logged_in? %>
+      <%= render 'partials/like_form' %>
+    <% end %>
+  </div>
+
+
+<div class="container reviewable-content">
+  <div class="row">
+    <div class="col s6">
+      <%= render 'partials/review_list' %>
+    </div>
+    <div class="col s5 right">
+      <% if logged_in? %>
+        <%= render 'partials/review_form' %>
+      <% else %>
+        <%= render 'partials/login_signup' %>
+      <% end %>
+    </div>
+  </div>
+</div>

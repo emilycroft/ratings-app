@@ -1,9 +1,10 @@
-<h1>Books</h1>
+<h3 class="center">Books</h3>
 
 <ul>
 <% @books.each do |book| %>
-  <li><%= link_to book.title, book_path(book) %></li>
+  <li class="center"><%= link_to book.title, book_path(book) %></li>
 <% end %>
 </ul>
 
-<%= link_to "Create New Book", new_book_path %>
+
+<div class="row center"><%= link_to "Create New Book", new_book_path, class: "btn-large waves-effect waves-light teal lighten-1" %></div>

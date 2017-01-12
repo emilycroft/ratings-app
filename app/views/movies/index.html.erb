@@ -1,10 +1,10 @@
-<h1>Movies</h1>
-
+<h3 class="center">Movies</h3>
 
 <ul>
 <% @movies.each do |movie| %>
-  <li><%= link_to movie.title, movie_path(movie) %></li>
+  <li class="center"><%= link_to movie.title, movie_path(movie) %></li>
 <% end %>
 </ul>
 
-<%= link_to "Create New Movie", new_movie_path %>
+
+<div class="row center"><%= link_to "Create New Movie", new_movie_path, class: "btn-large waves-effect waves-light teal lighten-1" %></div>
