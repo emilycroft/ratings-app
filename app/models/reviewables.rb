@@ -25,7 +25,7 @@ module Reviewables
       array = array.sort_by do |instance|
         instance.average_rating
       end
-      array.pop(5)
+      array.pop(5).reverse!
     end
 
   end
