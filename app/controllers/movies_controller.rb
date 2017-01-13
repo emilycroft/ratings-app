@@ -8,6 +8,8 @@ class MoviesController < ApplicationController
 
     if logged_in?
       @review = Review.find_or_initialize_by(reviewable_id: @movie.id, user_id: current_user.id, reviewable_type: "Movie")
+    else
+      @review = Review.find_by(reviewable_id: @movie.id, reviewable_type: "Movie")
     end
 
     if logged_in?

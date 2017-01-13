@@ -8,6 +8,8 @@ class ArtistsController < ApplicationController
 
     if logged_in?
       @review = Review.find_or_initialize_by(reviewable_id: @artist.id, user_id: current_user.id, reviewable_type: "Artist")
+    else
+      @review = Review.find_by(reviewable_id: @artist.id, reviewable_type: "Artist")
     end
 
     if logged_in?

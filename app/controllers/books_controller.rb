@@ -9,6 +9,8 @@ class BooksController < ApplicationController
 
     if logged_in?
       @review = Review.find_or_initialize_by(reviewable_id: @book.id, user_id: current_user.id, reviewable_type: "Book")
+    else
+      @review = Review.find_by(reviewable_id: @book.id, reviewable_type: "Book")
     end
 
     if logged_in?
