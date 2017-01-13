@@ -1,10 +1,12 @@
 <div class="center reviewable-head z-depth-1">
-  <h2><%= @video_game.title %></h2>
-  <span class="tiny">by </span><span class="tiny"><%= @video_game.author %></span>
-  <br>
+
+  <h2><%= @video_game.title %></h2><br>
+
   <% if @review %>
     <label class="tiny">Average Rating: </label><span><%= @review.reviewable.average_rating %></span>
   <% end %>
+
+
   <% if logged_in? %>
     <%= render 'partials/like_form' %>
   <% end %>
