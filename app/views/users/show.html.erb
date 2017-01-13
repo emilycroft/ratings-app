@@ -10,23 +10,25 @@
   <h5><%= @user.name %>'s List</h5>
   <ul>
     <% @user.likes.each do |like| %>
-    <li><%= like.likeable.title %></li>
+    <li><%= link_to like.likeable.title, url_for(like.likeable) %></li>
         <% end %>
       </ul>
     </div>
 
-  <div class="row">
-    <h4><%= @user.name %>'s Reviews</h4>
-    <ul>
-    <% @user.reviews.each do |review| %>
-      <li class="row card">
-        <div class="row reviewable-row"
-            <h5 class="col s2"><%= link_to review.reviewable.title, url_for(review.reviewable) %></h5>
-          <p><%= review.content %></p>
-          <p><b>Rating: </b><%= review.rating %></p>
-        </li>
-      <% end %>
-      </ul>
+  <div class="container">
+    <div class="row">
+      <h4><%= @user.name %>'s Reviews</h4>
+      <ul>
+      <% @user.reviews.each do |review| %>
+        <li class="row card">
+          <div class="row reviewable-row"
+              <h5 class="col s2"><%= link_to review.reviewable.title, url_for(review.reviewable) %></h5>
+            <p><%= review.content %></p>
+            <p><b>Rating: </b><%= review.rating %></p>
+          </li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
