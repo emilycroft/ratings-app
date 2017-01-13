@@ -15,24 +15,24 @@
   )
 end
 
-5.times do
+15.times do
   Artist.create( title: Faker::Name.name )
 end
 
-5.times do
+15.times do
   Book.create(
     title: Faker::Book.title,
     author: Faker::Book.author
   )
 end
 
-5.times do
+15.times do
   Movie.create(
     title: Faker::Book.title,
     director: Faker::Book.author
   )
 end
 
-5.times do
+15.times do
   VideoGame.create( title: Faker::Superhero.power )
 end
