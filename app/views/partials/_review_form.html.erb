@@ -6,7 +6,7 @@
     </div>
     <div class="row">
       <%= f.label :rating, class: "tiny input-field col s3" %>
-      <%= f.number_field :rating, class: "input-field col s2" %>
+      <%= f.number_field :rating, placeholder: '0-5', class: "input-field col s2" %>
     </div>
     <div class="row">
       <%= f.hidden_field :reviewable_id, :value => @review.reviewable.id %>
