@@ -1,22 +1,24 @@
-<h1>Sign Up!</h1>
+<div class="container">
+  <h1>Sign Up</h1>
 
-<%= form_for(@user) do |f| %>
+  <%= form_for(@user) do |f| %>
 
-  <%=f.label :name %>
-  <%=f.text_field :name %>
-  <br>
-  <%=f.label :username %>
-  <%=f.text_field :username %>
-  <br>
-  <%=f.label :email %>
-  <%=f.text_field :email %>
-  <br>
-  <%=f.label :password %>
-  <%=f.password_field :password %>
-  <br>
-  <%=f.label :password_confirmation %>
-  <%=f.password_field :password_confirmation %>
-  <br>
-  <%=f.submit %>
+    <%=f.label :name %>
+    <%=f.text_field :name %>
+    <br>
+    <%=f.label :username %>
+    <%=f.text_field :username %>
+    <br>
+    <%=f.label :email %>
+    <%=f.text_field :email %>
+    <br>
+    <%=f.label :password %>
+    <%=f.password_field :password %>
+    <br>
+    <%=f.label :password_confirmation %>
+    <%=f.password_field :password_confirmation %>
+    <br>
+    <%=f.submit class: "btn-large waves-effect waves-light teal lighten-1" %>
 
-<% end %>
+  <% end %>
+</div>
