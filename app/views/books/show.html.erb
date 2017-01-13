@@ -2,8 +2,9 @@
   <h2><%= @book.title %></h2>
   <span class="tiny">by </span><span class="tiny"><%= @book.author %></span>
   <br>
-  <label class="tiny">Average Rating: </label><span><%= @review.reviewable.average_rating %></span>
-
+  <% if @review %>
+    <label class="tiny">Average Rating: </label><span><%= @review.reviewable.average_rating %></span>
+  <% end %>
   <% if logged_in? %>
     <%= render 'partials/like_form' %>
   <% end %>

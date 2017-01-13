@@ -1,7 +1,9 @@
 <div class="center reviewable-head z-depth-1">
   <h2><%= @artist.title %></h2>
-
-  <label class="tiny">Average Rating: </label><span><%= @review.reviewable.average_rating %></span>
+  
+  <% if @review %>
+    <label class="tiny">Average Rating: </label><span><%= @review.reviewable.average_rating %></span>
+  <% end %>
 
   <% if logged_in? %>
     <%= render 'partials/like_form' %>
