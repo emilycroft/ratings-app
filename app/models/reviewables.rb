@@ -16,7 +16,16 @@ module Reviewables
   module ClassMethods
 
     def top_5
-      puts "Yay!"
+      array = self.all.collect do |instance|
+        unless instance.average_rating == "No reviews"
+          instance
+        end
+      end.compact
+
+      array = array.sort_by do |instance|
+        instance.average_rating
+      end
+      array.pop(5)
     end
 
   end
