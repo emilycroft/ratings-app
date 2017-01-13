@@ -7,7 +7,8 @@
       <div class="">
         <div class="row reviewable-row">
           <label class="tiny col s2">User: </label>
-          <span class="tiny col s1"><%= review.user.username %></span>
+
+          <span class="tiny col s1"><%=link_to "#{review.user.username}", user_path(review.user_id) %></span>
         </div>
 
         <div class="row reviewable-row">
