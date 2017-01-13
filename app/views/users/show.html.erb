@@ -1,20 +1,28 @@
-<h1><%= @user.name.capitalize %>'s Profile Page</h1>
-Username: <%= @user.username %><br>
+<div class="center reviewable-head z-depth-1">
+  <h4><%= @user.name.capitalize %>'s Profile Page</h4>
+  Username: <%= @user.username %><br>
 
-<h2><%= @user.name %>'s Reviews</h2>
-<ul>
-<% @user.reviews.each do |review| %>
-  <li>
-    <h3><%= link_to review.reviewable.title, url_for(review.reviewable) %></h3>
-    <p><%= review.content %></p>
-    <p><b>Rating: </b><%= review.rating %></p>
-  </li>
-<% end %>
-</ul>
+<div class="row card reviewable-row">
+  <h5><%= @user.name %>'s List</h5>
+  <ul>
+    <% @user.likes.each do |like| %>
+    <li><%= like.likeable.title %></li>
+        <% end %>
+      </ul>
+    </div>
 
-<h2><%= @user.name %>'s List</h2>
-<ul>
-<% @user.likes.each do |like| %>
-  <li><%= like.likeable.title %></li>
-<% end %>
-</ul>
+  <div class="row">
+    <h4><%= @user.name %>'s Reviews</h4>
+    <ul>
+    <% @user.reviews.each do |review| %>
+      <li class="row card">
+        <div class="row reviewable-row"
+            <h5 class="col s2"><%= link_to review.reviewable.title, url_for(review.reviewable) %></h5>
+          <p><%= review.content %></p>
+          <p><b>Rating: </b><%= review.rating %></p>
+        </li>
+      <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
