@@ -4,6 +4,7 @@
     <%= image_tag('LISTED-MUSIC-LOGO.png')%>
   </figure>
 
+
   <ul class="collection with-header center">
     <li class="collection-header"><h4>Top Artists</h4></li>
     <% @artists.first.class.top_5.collect do |artist| %>
@@ -11,6 +12,7 @@
     <% end %>
   </ul>
 
+  <div class="row center"><%= link_to "Create New Artist", new_artist_path, class: "btn-large waves-effect waves-light teal lighten-1" %></div>
 
   <h4 class="center">All Artists</h4>
   <ul>
@@ -20,5 +22,4 @@
   </ul>
 
 
-  <div class="row center"><%= link_to "Create New Artist", new_artist_path, class: "btn-large waves-effect waves-light teal lighten-1" %></div>
 </div>

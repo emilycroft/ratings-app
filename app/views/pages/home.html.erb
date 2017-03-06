@@ -7,7 +7,8 @@
       <% if !logged_in? %>
         <div class="row center login_signup">
           <%= link_to "Log In", new_session_path, class: "btn-large waves-effect waves-light teal lighten-1" %>
-          <span class="tiny"> or </span>
+          <br/>
+          <br/>
           <%= link_to "Sign Up", new_user_path, class: "btn-large waves-effect waves-light teal lighten-1" %>
         </div>
       <% end %>
