@@ -1,17 +1,26 @@
 <div id="index-banner">
+  <br>
+  <br>
   <div class="section no-pad-bot">
     <div class="container">
       <div class="row center">
         <%= image_tag "LISTED-LOGO.png" %>
       </div>
-      <% if !logged_in? %>
-        <div class="row center login_signup">
-          <%= link_to "Log In", new_session_path, class: "btn-large waves-effect waves-light teal lighten-1" %>
-          <br/>
-          <br/>
-          <%= link_to "Sign Up", new_user_path, class: "btn-large waves-effect waves-light teal lighten-1" %>
-        </div>
-      <% end %>
+      <br>
+      <br>
+      <p class="row center">A platform for rating and reviewing your favorite books, movies, video games, and artists.</p>
+        <p class="row center">Sign up or log in to leave your own ratings and reviews, or browse existing reviews created by other users.</p>
+
     </div>
   </div>
 </div>
+
+
+<!-- <% if !logged_in? %>
+  <div class="row center login_signup">
+    <%= link_to "Log In", new_session_path, class: "btn-large waves-effect waves-light teal lighten-1" %>
+    <br/>
+    <br/>
+    <%= link_to "Sign Up", new_user_path, class: "btn-large waves-effect waves-light teal lighten-1" %>
+  </div>
+<% end %> -->
